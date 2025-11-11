@@ -14,8 +14,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            background: #0a0a0a;
+            color: #ffffff;
             padding: 20px;
             line-height: 1.6;
         }
@@ -23,17 +23,19 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            background: white;
+            background: #1a1a1a;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
             overflow: hidden;
+            border: 1px solid #2a2a2a;
         }
 
         header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: #000000;
             color: white;
             padding: 60px 40px;
             text-align: center;
+            border-bottom: 3px solid #ff6b35;
         }
 
         h1 {
@@ -41,16 +43,19 @@
             font-weight: 700;
             margin-bottom: 10px;
             letter-spacing: -1px;
+            color: #ffffff;
         }
 
         .subtitle {
             font-size: 1.2em;
             opacity: 0.9;
             font-weight: 300;
+            color: #cccccc;
         }
 
         .content {
             padding: 40px;
+            background: #1a1a1a;
         }
 
         .section {
@@ -59,10 +64,10 @@
 
         .section-title {
             font-size: 2em;
-            color: #1e3c72;
+            color: #ff6b35;
             margin-bottom: 30px;
             padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
+            border-bottom: 3px solid #ff6b35;
         }
 
         .metrics-grid {
@@ -73,17 +78,17 @@
         }
 
         .metric-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff6b35 0%, #ff8c42 100%);
             color: white;
             padding: 30px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .metric-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
         }
 
         .metric-label {
@@ -106,17 +111,18 @@
         }
 
         .chart-container {
-            background: #f8f9fa;
+            background: #242424;
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border: 1px solid #2a2a2a;
         }
 
         .chart-title {
             font-size: 1.3em;
             font-weight: 600;
-            color: #1e3c72;
+            color: #ff6b35;
             margin-bottom: 20px;
             text-align: center;
         }
@@ -129,30 +135,26 @@
         }
 
         .insight-card {
-            background: white;
-            border-left: 4px solid #667eea;
+            background: #242424;
+            border-left: 4px solid #ff6b35;
             padding: 25px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .insight-card.success {
-            border-left-color: #10b981;
+            border-left-color: #ff6b35;
         }
 
         .insight-card.warning {
-            border-left-color: #f59e0b;
-        }
-
-        .insight-card.danger {
-            border-left-color: #ef4444;
+            border-left-color: #ffa500;
         }
 
         .insight-title {
             font-size: 1.1em;
             font-weight: 600;
             margin-bottom: 10px;
-            color: #1e3c72;
+            color: #ff6b35;
         }
 
         .insight-list {
@@ -164,13 +166,14 @@
             padding: 8px 0;
             padding-left: 25px;
             position: relative;
+            color: #e0e0e0;
         }
 
         .insight-list li:before {
             content: "→";
             position: absolute;
             left: 0;
-            color: #667eea;
+            color: #ff6b35;
             font-weight: bold;
         }
 
@@ -178,36 +181,42 @@
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background: white;
+            background: #242424;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .month-table th {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            background: #000000;
             color: white;
             padding: 15px;
             text-align: left;
             font-weight: 600;
+            border-bottom: 2px solid #ff6b35;
         }
 
         .month-table td {
             padding: 15px;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #2a2a2a;
+            color: #e0e0e0;
+        }
+
+        .month-table td strong {
+            color: #ffffff;
         }
 
         .month-table tr:hover {
-            background: #f8f9fa;
+            background: #2a2a2a;
         }
 
         .positive {
-            color: #10b981;
+            color: #ff6b35;
             font-weight: 600;
         }
 
         .negative {
-            color: #ef4444;
+            color: #ff4444;
             font-weight: 600;
         }
 
@@ -231,7 +240,7 @@
         }
 
         .badge-tiktok {
-            background: #000000;
+            background: #ff6b35;
             color: white;
         }
 
@@ -241,11 +250,12 @@
         }
 
         footer {
-            background: #f8f9fa;
+            background: #000000;
             padding: 30px 40px;
             text-align: center;
-            color: #666;
+            color: #999;
             font-size: 0.9em;
+            border-top: 2px solid #ff6b35;
         }
 
         @media (max-width: 768px) {
@@ -274,7 +284,7 @@
             <!-- Social Media Analytics - Last 90 Days -->
             <section class="section">
                 <h2 class="section-title">Social Media Performance (Last 90 Days)</h2>
-                <p style="color: #666; margin-bottom: 20px; font-size: 0.95em;">Aug 13 - Nov 10, 2025</p>
+                <p style="color: #999; margin-bottom: 20px; font-size: 0.95em;">Aug 13 - Nov 10, 2025</p>
                 <div class="metrics-grid">
                     <div class="metric-card">
                         <div class="metric-label">Accounts Reached</div>
@@ -527,14 +537,14 @@
                                 <td class="positive">Medium → High</td>
                                 <td>Creator content, training camp storylines, fantasy integration</td>
                             </tr>
-                            <tr style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%); border-left: 4px solid #10b981;">
+                            <tr style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.05) 100%); border-left: 4px solid #ff6b35;">
                                 <td><strong>NFL Season</strong></td>
                                 <td>Full Launch ⭐</td>
                                 <td>September 5 - November 10</td>
                                 <td class="positive">Peak Performance</td>
                                 <td>5 email campaigns/week, 5 push notifications/week, prime-time ads</td>
                             </tr>
-                            <tr style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%); border-left: 4px solid #10b981;">
+                            <tr style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.05) 100%); border-left: 4px solid #ff6b35;">
                                 <td><strong>College Football</strong></td>
                                 <td>Season Launch ⭐</td>
                                 <td>August 24 - November 30</td>
@@ -555,7 +565,7 @@
                                 <td>Medium</td>
                                 <td>Creator incubator activation, Smart Signal previews</td>
                             </tr>
-                            <tr style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%); border-left: 4px solid #10b981;">
+                            <tr style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.05) 100%); border-left: 4px solid #ff6b35;">
                                 <td><strong>NBA Season</strong></td>
                                 <td>Full Launch ⭐</td>
                                 <td>October 18 - Present</td>
@@ -569,7 +579,7 @@
                                 <td class="positive">High</td>
                                 <td>Champions Classic, rivalry matchups, early tournaments</td>
                             </tr>
-                            <tr style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(16, 185, 129, 0.05) 100%); border-left: 4px solid #10b981;">
+                            <tr style="background: linear-gradient(135deg, rgba(255, 107, 53, 0.15) 0%, rgba(255, 107, 53, 0.05) 100%); border-left: 4px solid #ff6b35;">
                                 <td><strong>College Basketball</strong></td>
                                 <td>Conference Play ⭐</td>
                                 <td>December 1 - March 9</td>
@@ -643,8 +653,8 @@
                 datasets: [{
                     label: 'Total Trials',
                     data: [10815, 5557, 12835, 9021, 5866, 5441, 5792, 7024, 20963, 19535, 7752],
-                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
-                    borderColor: 'rgba(102, 126, 234, 1)',
+                    backgroundColor: 'rgba(255, 107, 53, 0.8)',
+                    borderColor: 'rgba(255, 107, 53, 1)',
                     borderWidth: 2,
                     borderRadius: 8
                 }]
@@ -660,12 +670,18 @@
                     y: {
                         beginAtZero: true,
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#999'
                         }
                     },
                     x: {
                         grid: {
                             display: false
+                        },
+                        ticks: {
+                            color: '#999'
                         }
                     }
                 }
@@ -681,13 +697,15 @@
                 datasets: [{
                     label: 'Cost Per Trial ($)',
                     data: [17.59, 18.08, 13.20, 12.62, 7.97, 8.35, 6.91, 6.65, 7.36],
-                    backgroundColor: 'rgba(118, 75, 162, 0.1)',
-                    borderColor: 'rgba(118, 75, 162, 1)',
+                    backgroundColor: 'rgba(255, 140, 66, 0.2)',
+                    borderColor: 'rgba(255, 107, 53, 1)',
                     borderWidth: 3,
                     fill: true,
                     tension: 0.4,
                     pointRadius: 5,
-                    pointHoverRadius: 7
+                    pointHoverRadius: 7,
+                    pointBackgroundColor: 'rgba(255, 107, 53, 1)',
+                    pointBorderColor: '#fff'
                 }]
             },
             options: {
@@ -695,16 +713,20 @@
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'top'
+                        position: 'top',
+                        labels: {
+                            color: '#999'
+                        }
                     }
                 },
                 scales: {
                     y: {
                         beginAtZero: true,
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                            color: 'rgba(255, 255, 255, 0.1)'
                         },
                         ticks: {
+                            color: '#999',
                             callback: function(value) {
                                 return '$' + value;
                             }
@@ -713,6 +735,9 @@
                     x: {
                         grid: {
                             display: false
+                        },
+                        ticks: {
+                            color: '#999'
                         }
                     }
                 }
@@ -730,11 +755,11 @@
                     data: [654, -391, 1101, -232, -540, -520, 36, 622, 4710, 5067, -75],
                     backgroundColor: function(context) {
                         const value = context.parsed.y;
-                        return value >= 0 ? 'rgba(16, 185, 129, 0.8)' : 'rgba(239, 68, 68, 0.8)';
+                        return value >= 0 ? 'rgba(255, 107, 53, 0.8)' : 'rgba(255, 68, 68, 0.8)';
                     },
                     borderColor: function(context) {
                         const value = context.parsed.y;
-                        return value >= 0 ? 'rgba(16, 185, 129, 1)' : 'rgba(239, 68, 68, 1)';
+                        return value >= 0 ? 'rgba(255, 107, 53, 1)' : 'rgba(255, 68, 68, 1)';
                     },
                     borderWidth: 2,
                     borderRadius: 8
@@ -745,18 +770,27 @@
                 plugins: {
                     legend: {
                         display: true,
-                        position: 'top'
+                        position: 'top',
+                        labels: {
+                            color: '#999'
+                        }
                     }
                 },
                 scales: {
                     y: {
                         grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
+                            color: 'rgba(255, 255, 255, 0.1)'
+                        },
+                        ticks: {
+                            color: '#999'
                         }
                     },
                     x: {
                         grid: {
                             display: false
+                        },
+                        ticks: {
+                            color: '#999'
                         }
                     }
                 }
@@ -773,12 +807,12 @@
                     data: [67.5, 22.5, 7.5, 2.5],
                     backgroundColor: [
                         'rgba(59, 89, 152, 0.8)',
-                        'rgba(0, 0, 0, 0.8)',
+                        'rgba(255, 107, 53, 0.8)',
                         'rgba(85, 85, 85, 0.8)',
                         'rgba(156, 163, 175, 0.8)'
                     ],
                     borderWidth: 2,
-                    borderColor: '#fff'
+                    borderColor: '#1a1a1a'
                 }]
             },
             options: {
@@ -790,7 +824,8 @@
                             padding: 20,
                             font: {
                                 size: 12
-                            }
+                            },
+                            color: '#999'
                         }
                     }
                 }
