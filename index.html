@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rithmm 2025 Marketing Performance Report</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #1e3c72;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .metric-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .metric-subtext {
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
+
+        .chart-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .chart-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .insight-card {
+            background: white;
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .insight-card.success {
+            border-left-color: #10b981;
+        }
+
+        .insight-card.warning {
+            border-left-color: #f59e0b;
+        }
+
+        .insight-card.danger {
+            border-left-color: #ef4444;
+        }
+
+        .insight-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+
+        .insight-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .insight-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .insight-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .month-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .month-table th {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .month-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .month-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .positive {
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        .negative {
+            color: #ef4444;
+            font-weight: 600;
+        }
+
+        .channel-badges {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .badge {
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .badge-meta {
+            background: #3b5998;
+            color: white;
+        }
+
+        .badge-tiktok {
+            background: #000000;
+            color: white;
+        }
+
+        .badge-apple {
+            background: #555555;
+            color: white;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 30px 40px;
+            text-align: center;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Rithmm 2025 Marketing Performance Report</h1>
+            <p class="subtitle">Comprehensive Performance Analysis • January - November 2025</p>
+        </header>
+
+        <div class="content">
+            <!-- Key Metrics -->
+            <section class="section">
+                <h2 class="section-title">Executive Performance Dashboard</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Total New Trials</div>
+                        <div class="metric-value">132,110</div>
+                        <div class="metric-subtext">Through November 9, 2025</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total Digital Spend</div>
+                        <div class="metric-value">$1.05M</div>
+                        <div class="metric-subtext">$1,047,535 invested YTD</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Average CPT</div>
+                        <div class="metric-value">$7.93</div>
+                        <div class="metric-subtext">Cost per trial acquisition</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Peak Trial Day</div>
+                        <div class="metric-value">794</div>
+                        <div class="metric-subtext">September 14, 2025</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Monthly Trials Chart -->
+            <section class="section">
+                <h2 class="section-title">Monthly Trial Acquisition Trends</h2>
+                <div class="chart-container">
+                    <div class="chart-title">Total Trials by Month</div>
+                    <canvas id="trialsChart"></canvas>
+                </div>
+            </section>
+
+            <!-- CPT Performance Chart -->
+            <section class="section">
+                <div class="chart-container">
+                    <div class="chart-title">Cost Per Trial (CPT) Performance</div>
+                    <canvas id="cptChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Net New Subscribers Chart -->
+            <section class="section">
+                <div class="chart-container">
+                    <div class="chart-title">Net New Subscribers by Month</div>
+                    <canvas id="subscribersChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Channel Mix -->
+            <section class="section">
+                <h2 class="section-title">Channel Strategy & Allocation</h2>
+                <div class="channel-badges">
+                    <div class="badge badge-meta">Meta (iOS & Android): 65-70% of spend</div>
+                    <div class="badge badge-tiktok">TikTok: 20-25% of spend</div>
+                    <div class="badge badge-apple">Apple Search Ads: 5-10% of spend</div>
+                </div>
+                <div class="chart-container" style="margin-top: 30px;">
+                    <div class="chart-title">Channel Mix Distribution</div>
+                    <canvas id="channelChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Monthly Performance Table -->
+            <section class="section">
+                <h2 class="section-title">Detailed Monthly Performance</h2>
+                <table class="month-table">
+                    <thead>
+                        <tr>
+                            <th>Month</th>
+                            <th>Total Trials</th>
+                            <th>Avg CPT</th>
+                            <th>Net New Subscribers</th>
+                            <th>Key Events</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>January</strong></td>
+                            <td>10,815</td>
+                            <td>$17.59</td>
+                            <td class="positive">+654</td>
+                            <td>NFL Playoffs, CFP Championship</td>
+                        </tr>
+                        <tr>
+                            <td><strong>February</strong></td>
+                            <td>5,557</td>
+                            <td>$18.08</td>
+                            <td class="negative">-391</td>
+                            <td>Super Bowl, NBA All-Star</td>
+                        </tr>
+                        <tr>
+                            <td><strong>March</strong></td>
+                            <td>12,835</td>
+                            <td>$13.20</td>
+                            <td class="positive">+1,101</td>
+                            <td>March Madness (Peak Event)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>April</strong></td>
+                            <td>9,021</td>
+                            <td>$12.62</td>
+                            <td class="negative">-232</td>
+                            <td>Post-March decline</td>
+                        </tr>
+                        <tr>
+                            <td><strong>May</strong></td>
+                            <td>5,866</td>
+                            <td>$7.97</td>
+                            <td class="negative">-540</td>
+                            <td>Lowest performing month</td>
+                        </tr>
+                        <tr>
+                            <td><strong>June</strong></td>
+                            <td>5,441</td>
+                            <td>$8.35</td>
+                            <td class="negative">-520</td>
+                            <td>Off-season challenges</td>
+                        </tr>
+                        <tr>
+                            <td><strong>July</strong></td>
+                            <td>5,792</td>
+                            <td>—</td>
+                            <td class="positive">+36</td>
+                            <td>NFL anticipation builds</td>
+                        </tr>
+                        <tr>
+                            <td><strong>August</strong></td>
+                            <td>7,024</td>
+                            <td>—</td>
+                            <td class="positive">+622</td>
+                            <td>Football ramp begins</td>
+                        </tr>
+                        <tr>
+                            <td><strong>September</strong></td>
+                            <td>20,963</td>
+                            <td>$6.91</td>
+                            <td class="positive">+4,710</td>
+                            <td>NFL Season Launch (Peak Month)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>October</strong></td>
+                            <td>19,535</td>
+                            <td>$6.65</td>
+                            <td class="positive">+5,067</td>
+                            <td>Best CPT of year</td>
+                        </tr>
+                        <tr>
+                            <td><strong>November</strong></td>
+                            <td>7,752</td>
+                            <td>$7.36</td>
+                            <td class="negative">-75</td>
+                            <td>Through Nov 9 only</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Strategic Insights -->
+            <section class="section">
+                <h2 class="section-title">Strategic Insights & Recommendations</h2>
+                <div class="insights-grid">
+                    <div class="insight-card success">
+                        <div class="insight-title">What's Working</div>
+                        <ul class="insight-list">
+                            <li>Football season drives strongest acquisition</li>
+                            <li>March Madness delivers highest ROI</li>
+                            <li>Multi-sport layering reduces seasonality risk</li>
+                            <li>TikTok Smart+ shows strong efficiency</li>
+                        </ul>
+                    </div>
+                    <div class="insight-card danger">
+                        <div class="insight-title">Key Issues</div>
+                        <ul class="insight-list">
+                            <li>Churn spikes offset trial growth</li>
+                            <li>Trial-to-paid conversion below target</li>
+                            <li>Off-season months underperform</li>
+                            <li>Late-month billing churn waves</li>
+                        </ul>
+                    </div>
+                    <div class="insight-card warning">
+                        <div class="insight-title">2026 Opportunities</div>
+                        <ul class="insight-list">
+                            <li>Begin football ramp earlier (mid-July)</li>
+                            <li>Expand March Madness spend 40-60%</li>
+                            <li>Strengthen NBA playoff strategy</li>
+                            <li>Enhanced lifecycle CRM system</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2025 Sports Calendar -->
+            <section class="section">
+                <h2 class="section-title">2025 Major Sports Calendar & Campaign Focus</h2>
+                <div class="chart-container">
+                    <div class="chart-title">Key Sporting Events & Marketing Pushes</div>
+                    <table class="month-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Quarter</th>
+                                <th>Major Events</th>
+                                <th>Campaign Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>January</strong></td>
+                                <td>Q1</td>
+                                <td>NFL Playoffs, CFP National Championship</td>
+                                <td>NFL Playoff Push</td>
+                            </tr>
+                            <tr>
+                                <td><strong>February</strong></td>
+                                <td>Q1</td>
+                                <td>Super Bowl, NBA Trade Deadline, NBA All-Star Break</td>
+                                <td>Super Bowl Campaign</td>
+                            </tr>
+                            <tr>
+                                <td><strong>March</strong></td>
+                                <td>Q1</td>
+                                <td>March Madness (NCAA Tournament)</td>
+                                <td>March Madness Blitz</td>
+                            </tr>
+                            <tr>
+                                <td><strong>April</strong></td>
+                                <td>Q2</td>
+                                <td>NBA Playoffs Begin, MLB Season</td>
+                                <td>NBA Playoffs Launch</td>
+                            </tr>
+                            <tr>
+                                <td><strong>May</strong></td>
+                                <td>Q2</td>
+                                <td>NBA Playoffs Continue, MLB</td>
+                                <td>Sustained NBA Coverage</td>
+                            </tr>
+                            <tr>
+                                <td><strong>June</strong></td>
+                                <td>Q2</td>
+                                <td>NBA Finals, MLB, Stanley Cup Finals</td>
+                                <td>Multi-Sport Finals Push</td>
+                            </tr>
+                            <tr>
+                                <td><strong>July</strong></td>
+                                <td>Q3</td>
+                                <td>MLB All-Star, NFL Training Camps</td>
+                                <td>Early Football Anticipation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>August</strong></td>
+                                <td>Q3</td>
+                                <td>NFL Preseason, College Football Kickoff</td>
+                                <td>Football Season Ramp</td>
+                            </tr>
+                            <tr>
+                                <td><strong>September</strong></td>
+                                <td>Q3</td>
+                                <td>NFL Season Launch, College Football, MLB Playoffs</td>
+                                <td>Peak Football Acquisition</td>
+                            </tr>
+                            <tr>
+                                <td><strong>October</strong></td>
+                                <td>Q4</td>
+                                <td>NFL, College Football, NBA Season Start, MLB World Series</td>
+                                <td>Multi-Sport Saturation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>November</strong></td>
+                                <td>Q4</td>
+                                <td>NFL, College Football, NBA Regular Season</td>
+                                <td>Holiday Season Push</td>
+                            </tr>
+                            <tr>
+                                <td><strong>December</strong></td>
+                                <td>Q4</td>
+                                <td>NFL, College Football Playoffs, NBA, Bowl Season</td>
+                                <td>Year-End Football Finale</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="insights-grid" style="margin-top: 30px;">
+                    <div class="insight-card success">
+                        <div class="insight-title">🏈 Football Season (Q3-Q4)</div>
+                        <ul class="insight-list">
+                            <li>NFL & College Football dominated acquisition</li>
+                            <li>September-October = 40,498 trials (30.7% of year)</li>
+                            <li>Lowest CPT of entire year ($6.65-$6.91)</li>
+                            <li>Strongest conversion and retention period</li>
+                        </ul>
+                    </div>
+                    <div class="insight-card success">
+                        <div class="insight-title">🏀 March Madness (Q1)</div>
+                        <ul class="insight-list">
+                            <li>Single best ROI event of the year</li>
+                            <li>Peak day: March 19 with 947 trials</li>
+                            <li>Strong trial-to-paid conversion rates</li>
+                            <li>Efficient CPT at $13.20</li>
+                        </ul>
+                    </div>
+                    <div class="insight-card warning">
+                        <div class="insight-title">⚾ Off-Season Challenges (Q2)</div>
+                        <ul class="insight-list">
+                            <li>May-June = weakest performance period</li>
+                            <li>Combined 11,307 trials with negative subscriber growth</li>
+                            <li>MLB/NBA Finals insufficient to drive volume</li>
+                            <li>Content strategy gap identified</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p><strong>Document Prepared:</strong> November 11, 2025</p>
+            <p>Data Sources: Rithmm acquisition tracking, forecasting models, and spend data through November 9, 2025</p>
+            <p><strong>Next Review:</strong> End of November 2025 (Post-Black Friday Performance Evaluation)</p>
+        </footer>
+    </div>
+
+    <script>
+        // Monthly Trials Chart
+        const trialsCtx = document.getElementById('trialsChart').getContext('2d');
+        new Chart(trialsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'Total Trials',
+                    data: [10815, 5557, 12835, 9021, 5866, 5441, 5792, 7024, 20963, 19535, 7752],
+                    backgroundColor: 'rgba(102, 126, 234, 0.8)',
+                    borderColor: 'rgba(102, 126, 234, 1)',
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // CPT Chart
+        const cptCtx = document.getElementById('cptChart').getContext('2d');
+        new Chart(cptCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'Cost Per Trial ($)',
+                    data: [17.59, 18.08, 13.20, 12.62, 7.97, 8.35, 6.91, 6.65, 7.36],
+                    backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                    borderColor: 'rgba(118, 75, 162, 1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        },
+                        ticks: {
+                            callback: function(value) {
+                                return '$' + value;
+                            }
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Subscribers Chart
+        const subscribersCtx = document.getElementById('subscribersChart').getContext('2d');
+        new Chart(subscribersCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov'],
+                datasets: [{
+                    label: 'Net New Subscribers',
+                    data: [654, -391, 1101, -232, -540, -520, 36, 622, 4710, 5067, -75],
+                    backgroundColor: function(context) {
+                        const value = context.parsed.y;
+                        return value >= 0 ? 'rgba(16, 185, 129, 0.8)' : 'rgba(239, 68, 68, 0.8)';
+                    },
+                    borderColor: function(context) {
+                        const value = context.parsed.y;
+                        return value >= 0 ? 'rgba(16, 185, 129, 1)' : 'rgba(239, 68, 68, 1)';
+                    },
+                    borderWidth: 2,
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0.05)'
+                        }
+                    },
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+
+        // Channel Mix Chart
+        const channelCtx = document.getElementById('channelChart').getContext('2d');
+        new Chart(channelCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Meta (iOS & Android)', 'TikTok', 'Apple Search Ads', 'Other'],
+                datasets: [{
+                    data: [67.5, 22.5, 7.5, 2.5],
+                    backgroundColor: [
+                        'rgba(59, 89, 152, 0.8)',
+                        'rgba(0, 0, 0, 0.8)',
+                        'rgba(85, 85, 85, 0.8)',
+                        'rgba(156, 163, 175, 0.8)'
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            padding: 20,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+
+    </script>
+</body>
+</html>
